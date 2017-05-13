@@ -34,7 +34,16 @@ public class Coin : MonoBehaviour
 
         if (CoinCount <= 0)
         {
-            Debug.Log("We won!");
+            // Game if won, Collected all coins
+            // Destroy timer and launch fireworks
+            GameObject Timer = GameObject.Find("LevelTimer");
+            Destroy(Timer);
+
+            GameObject[] FireWorks = GameObject.FindGameObjectsWithTag("FireWorks");
+            foreach(GameObject FireWork in FireWorks)
+            {
+                FireWork.GetComponent<ParticleSystem>().Play();
+            }
         }
     }
 }
